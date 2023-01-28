@@ -8,6 +8,7 @@ from sqlalchemy_utils import URLType
 
 from db import Base
 
+
 class ShortUrl(Base):
     """Модель сокращенного url."""
     __tablename__ = 'short_url'
@@ -15,7 +16,6 @@ class ShortUrl(Base):
     original_url = Column(URLType, nullable=False)
     url_id = Column(String(8), index=True, nullable=False)
     short_url = Column(URLType, nullable=False)
-    is_active = Column(Boolean, default=True)
     usages_count = Column(Integer)
     created_at = Column(DateTime, default=datetime.utcnow)
     url_history = relationship('ShortUrlHistory', cascade="all, delete")

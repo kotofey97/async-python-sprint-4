@@ -11,15 +11,14 @@ app = FastAPI(
     # Конфигурируем название проекта. Оно будет отображаться в документации
     title=app_settings.app_title,
     # Адрес документации в красивом интерфейсе
-    docs_url='/api/openapi',
+    docs_url='/api/swagger',
     # Адрес документации в формате OpenAPI
-    openapi_url='/api/openapi.json',
+    openapi_url='/api/swagger.json',
     # Можно сразу сделать небольшую оптимизацию сервиса 
     # и заменить стандартный JSON-сериализатор на более шуструю версию, написанную на Rust
     default_response_class=ORJSONResponse,
 )
 
-app.include_router(base.router, prefix='/api/v1')
 app.include_router(base.router, prefix='/api/v1')
 
 if __name__ == '__main__':

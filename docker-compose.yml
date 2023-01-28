@@ -11,3 +11,15 @@ services:
       - 8000:8000
     volumes:
       - ./src:/src
+    env_file:
+      - ./.env
+    depends_on:
+      - postgres-fastapi
+
+  postgres-fastapi:
+    container_name: postgres-fastapi
+    image: postgres:14.5
+    expose:
+      - 5432
+    env_file:
+      - ./.env

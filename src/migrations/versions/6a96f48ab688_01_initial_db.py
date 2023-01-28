@@ -23,7 +23,6 @@ def upgrade() -> None:
     sa.Column('original_url', sqlalchemy_utils.types.url.URLType(), nullable=False),
     sa.Column('url_id', sa.String(length=8), nullable=False),
     sa.Column('short_url', sqlalchemy_utils.types.url.URLType(), nullable=False),
-    sa.Column('is_active', sa.Boolean(), nullable=True),
     sa.Column('usages_count', sa.Integer(), nullable=True),
     sa.Column('created_at', sa.DateTime(), nullable=True),
     sa.PrimaryKeyConstraint('id')
