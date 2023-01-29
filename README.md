@@ -110,4 +110,4 @@ GET /<url_id>/status?[full-info]&&[max-result=10]&&[offset=0]
 ## Как запустить
 1. docker-compose build
 2. docker-compose up
-3. Запусить тесты: docker-compose run web pytest
+3. Запустить тесты: docker-compose run web pytest
