@@ -5,8 +5,8 @@ from schemas.urls import OriginalUrl, ShortUrl
 from .base import RepositoryDB
 
 
-class RepositoryLink(RepositoryDB[ShortUrlModel, ShortUrlHistory, ShortUrl, OriginalUrl]):
+class Repository(RepositoryDB[ShortUrlModel, ShortUrlHistory, ShortUrl, OriginalUrl]):
     pass
 
 
-urls_crud = RepositoryLink(ShortUrlModel, ShortUrlHistory)
+urls_crud = Repository(ShortUrlModel, ShortUrlHistory)
