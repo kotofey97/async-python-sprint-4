@@ -29,4 +29,5 @@ class AppSettings(BaseSettings):
     class Config:
         env_file = '.env'
 
+
 app_settings = AppSettings()

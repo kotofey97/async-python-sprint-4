@@ -38,6 +38,7 @@ class UrlHistoryInfo(BaseModel):
     class Config:
         orm_mode = True
 
+
 class UrlHistoryFullInfo(BaseModel):
     """Подробная история переходов"""
     __root__: list[UrlHistoryInfo]

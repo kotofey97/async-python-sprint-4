@@ -17,6 +17,7 @@ from models.urls import ShortUrl
 TEST_DB_NAME = "test_db"
 database_dsn = (f'postgresql+asyncpg://postgres:postgres@localhost:5432/{TEST_DB_NAME}')
 
+
 @pytest_asyncio.fixture(scope='function')
 async def client() -> AsyncGenerator[AsyncClient, None]:
     async with AsyncClient(app=app, follow_redirects=False, base_url='http://localhost') as async_client:
@@ -26,6 +27,7 @@ async def client() -> AsyncGenerator[AsyncClient, None]:
 @pytest_asyncio.fixture(scope='function')
 async def test_urls():
     yield [f'http://test_url{i}.ru' for i in range(3)]
+
 
 @pytest.fixture(scope="session")
 def event_loop() -> Generator[AbstractEventLoop, None, None]:

@@ -4,7 +4,6 @@ import pytest
 from fastapi import status
 from httpx import AsyncClient
 
-from core.config import app_settings
 from main import app
 
 
@@ -61,7 +60,7 @@ async def test_get_url_status(client: AsyncClient, test_urls) -> None:
         json={'original_url': test_urls[0]}
     )
     assert response.status_code == status.HTTP_201_CREATED
-    
+
     short_url = response.json()['url_id']
 
     response = await client.get(app.url_path_for(

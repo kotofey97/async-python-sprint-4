@@ -1,6 +1,6 @@
 import logging
 from logging import config as logging_config
-from typing import Any, Optional, Union
+from typing import Any
 
 from fastapi import APIRouter, Depends, HTTPException, Query, Request, status
 from fastapi.responses import JSONResponse, RedirectResponse
@@ -8,9 +8,7 @@ from sqlalchemy.ext.asyncio import AsyncSession
 
 from core.logger import LOGGING
 from db import get_session
-from schemas.urls import (OriginalUrl, OriginalUrlsList, ShortUrl,
-                          ShortUrlsList, UrlHistoryFullInfo,
-                          UrlHistoryShortInfo)
+from schemas.urls import OriginalUrl, OriginalUrlsList, ShortUrl, ShortUrlsList
 from services.short_url import urls_crud
 
 logging_config.dictConfig(LOGGING)
