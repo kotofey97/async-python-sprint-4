@@ -16,7 +16,7 @@ class BlackListMiddleware:
         self._black_list = black_list
 
     async def __call__(self, request: Request, call_next: Callable) -> Response:
-        if request.client and request.client.host not in self._black_list:
-            return await call_next(request)
-        logger.info(f'Client {request.client.host} from black list send request')
-        return Response('Access denied', status_code=status.HTTP_403_FORBIDDEN)
+        if request.client and request.client.host in self._black_list:
+            logger.info(f'Client {request.client.host} from black list send request')
+            return Response('Access denied', status_code=status.HTTP_403_FORBIDDEN)
+        return await call_next(request)
