@@ -28,14 +28,19 @@ class UrlHistoryShortInfo(BaseModel):
         orm_mode = True
 
 
-class UrlHistoryFullInfo(BaseModel):
+class UrlHistoryInfo(BaseModel):
     """Подробная история переходов"""
-    usages_count: int
     use_at: datetime
     client: str
+    id: str
+    short_url: str
 
     class Config:
         orm_mode = True
+
+class UrlHistoryFullInfo(BaseModel):
+    """Подробная история переходов"""
+    __root__: list[UrlHistoryInfo]
 
 
 class OriginalUrlsList(BaseModel):
