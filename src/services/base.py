@@ -1,3 +1,4 @@
+from abc import ABC, abstractmethod
 from typing import Any, Generic, Optional, Type, TypeVar
 
 from fastapi.encoders import jsonable_encoder
@@ -31,24 +32,34 @@ def create_obj(obj_in_data, model) -> ShortUrl:
     return model(**obj_in_data)
 
 
-class Repository:
+class Repository(ABC):
 
+    @abstractmethod
     def get(self, *args, **kwargs):
         raise NotImplementedError
 
+    @abstractmethod
     def create(self, *args, **kwargs):
         raise NotImplementedError
 
+    @abstractmethod
     def create_history(self, *args, **kwargs):
         raise NotImplementedError
 
+    @abstractmethod
     def get_status(self, *args, **kwargs):
         raise NotImplementedError
 
+    @abstractmethod
     def bulk_create(self, *args, **kwargs):
         raise NotImplementedError
 
-    def ping(self, *args, **kwargs):
+    @abstractmethod
+    def ping_db(self, *args, **kwargs):
+        raise NotImplementedError
+
+    @abstractmethod
+    def update_usage_count(self, *args, **kwargs):
         raise NotImplementedError
 
 

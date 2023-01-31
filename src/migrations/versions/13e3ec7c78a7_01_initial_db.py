@@ -1,8 +1,8 @@
 """01_initial-db
 
-Revision ID: 6a96f48ab688
+Revision ID: 13e3ec7c78a7
 Revises: 
-Create Date: 2023-01-27 00:07:44.733503
+Create Date: 2023-01-31 17:09:53.343117
 
 """
 from alembic import op
@@ -10,7 +10,7 @@ import sqlalchemy as sa
 from sqlalchemy.dialects import postgresql
 import sqlalchemy_utils
 # revision identifiers, used by Alembic.
-revision = '6a96f48ab688'
+revision = '13e3ec7c78a7'
 down_revision = None
 branch_labels = None
 depends_on = None
@@ -30,10 +30,10 @@ def upgrade() -> None:
     op.create_index(op.f('ix_short_url_url_id'), 'short_url', ['url_id'], unique=False)
     op.create_table('short_url_history',
     sa.Column('id', postgresql.UUID(as_uuid=True), nullable=False),
-    sa.Column('short_url', postgresql.UUID(as_uuid=True), nullable=True),
-    sa.Column('client', sa.String(), nullable=False),
+    sa.Column('short_url', postgresql.UUID(as_uuid=True), nullable=False),
+    sa.Column('client', sa.String(length=50), nullable=False),
     sa.Column('use_at', sa.DateTime(), nullable=True),
-    sa.ForeignKeyConstraint(['short_url'], ['short_url.id'], ),
+    sa.ForeignKeyConstraint(['short_url'], ['short_url.id'], ondelete='CASCADE'),
     sa.PrimaryKeyConstraint('id')
     )
     op.create_index(op.f('ix_short_url_history_use_at'), 'short_url_history', ['use_at'], unique=False)

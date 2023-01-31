@@ -9,7 +9,7 @@ from core.config import app_settings
 from core.middleware import BlackListMiddleware
 
 app = FastAPI(
-    title=app_settings.app_title,
+    title=app_settings.project_name,
     docs_url='/api/swagger',
     openapi_url='/api/swagger.json',
     default_response_class=ORJSONResponse,

@@ -25,6 +25,10 @@ class ShortUrlHistory(Base):
     """История использования"""
     __tablename__ = "short_url_history"
     id = Column(UUID(as_uuid=True), primary_key=True, default=uuid.uuid4)
-    short_url = Column(UUID(as_uuid=True), ForeignKey('short_url.id'))
-    client = Column(String, nullable=False)
+    short_url = Column(
+        UUID(as_uuid=True),
+        ForeignKey('short_url.id', ondelete="CASCADE"),
+        nullable=False,
+    )
+    client = Column(String(50), nullable=False)
     use_at = Column(DateTime, index=True, default=datetime.utcnow)
